@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/ui/ThemeProvider"
 import Navbar from "@/components/ui/Navbar";
 import Sidebar from "@/components/ui/Sidebar";
+import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -58,6 +59,8 @@ export default function RootLayout({
 
             </div>
 
+            {/* using reat-hot-post */}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
