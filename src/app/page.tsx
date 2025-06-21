@@ -1,6 +1,7 @@
 import CreatePost from "@/components/CreatePost";
 import { Button } from "@/components/ui/button";
 import ModeToggle from "@/components/ui/ModeToggle";
+import WhoToFollow from "@/components/WhoToFollow";
 
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
@@ -16,6 +17,9 @@ export default async function Home() {
           {user ? <CreatePost /> : null}
         </div>
 
+        <div className="hidden  lg:block lg:col-span-4 sticky top-20">
+          <WhoToFollow />
+        </div>
       </div>
     </div>
   );
