@@ -82,6 +82,13 @@ export async function toggleLike(postId: string) {
     const userId = await getDbUserId();
     if (!userId) return;
 
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+      select: { authorId: true },
+    });
+
+    if (!post) throw new Error("Post not found");
+
     // check if like exists
     const existingLike = await prisma.like.findUnique({
       where: {
@@ -91,13 +98,6 @@ export async function toggleLike(postId: string) {
         },
       },
     });
-
-    const post = await prisma.post.findUnique({
-      where: { id: postId },
-      select: { authorId: true },
-    });
-
-    if (!post) throw new Error("Post not found");
 
     if (existingLike) {
       // unlike
